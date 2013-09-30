@@ -1,6 +1,16 @@
 require 'spec_helper'
 
-describe Poker, "#hand" do
+# :pikes :clubs :hearts :diamonds
+describe Poker, "#check" do
 	let (:poker) {Poker.new}
+
+	it "mano contine :pair" do
+		hand = [ Card.new(1, :diamonds),
+				 Card.new(2, :diamonds),
+				 Card.new(3, :diamonds),
+				 Card.new(3, :diamonds),
+				 Card.new(1, :diamonds)]
+		Poker.check(hand).should eq (:pair)
+	end
 
 end
