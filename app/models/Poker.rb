@@ -1,12 +1,12 @@
 class Poker
 
 	def self.check(hand)
+		return :colour if colour(hand)
 		return :pair if pair(hand)
 		return :third if third(hand)
 		return :twin_pairs if twin_pairs(hand)
 		return :full if full(hand)
 		return :straight if straight(hand)
-		return :colour if colour(hand)
 		nil
 	end
 
