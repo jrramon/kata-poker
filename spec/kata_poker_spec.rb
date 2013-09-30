@@ -16,8 +16,17 @@ describe Poker, "#check" do
 	it "mano contine :pair" do
 		hand = [ Card.new(1, :diamonds),
 				 Card.new(2, :diamonds),
+				 Card.new(3, :pikes),
+				 Card.new(5, :diamonds),
+				 Card.new(1, :diamonds)]
+		Poker.check(hand).should eq (:pair)
+	end
+
+	it "mano contine :pair" do
+		hand = [ Card.new(1, :diamonds),
+				 Card.new(2, :diamonds),
 				 Card.new(3, :diamonds),
-				 Card.new(3, :diamonds),
+				 Card.new(3, :pikes),
 				 Card.new(1, :diamonds)]
 		Poker.check(hand).should_not eq (:pair)
 	end
