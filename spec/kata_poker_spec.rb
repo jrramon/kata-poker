@@ -59,4 +59,13 @@ describe Poker, "#check" do
 		Poker.check(hand).should eq (:full)
 	end
 
+	it "mano contiene :straight" do
+		hand = [ Card.new(5, :diamonds),
+				 Card.new(6, :diamonds),
+				 Card.new(7, :pikes),
+				 Card.new(8, :pikes),
+				 Card.new(9, :hearts)]
+		Poker.check(hand).should eq (:straight)
+	end
+
 end

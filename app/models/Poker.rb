@@ -5,6 +5,7 @@ class Poker
 		return :third if third(hand)
 		return :twin_pairs if twin_pairs(hand)
 		return :full if full(hand)
+		return :straight if straight(hand)
 		nil
 	end
 
@@ -23,6 +24,10 @@ class Poker
 	def self.full(hand) 
 		counts_appearances(hand).values.count(2) == 1 && 
 			counts_appearances(hand).values.count(3) == 1
+	end
+
+	def self.straight(hand)
+		(counts_appearances(hand).values.count(1) == 5) && (max_value(hand) - min_value(hand) == 4)
 	end
 
 	def self.only_one_pair(counts_apps)
@@ -45,5 +50,16 @@ class Poker
 		counts
 	end
 
+	def self.max_value(hand)
+		hand.max{|cardA, cardB|
+			cardA.num <=> cardB.num
+		}.num
+	end
+
+	def self.min_value(hand)
+		hand.min{|cardA, cardB|
+			cardA.num <=> cardB.num
+		}.num
+	end
 	
 end
