@@ -68,4 +68,13 @@ describe Poker, "#check" do
 		Poker.check(hand).should eq (:straight)
 	end
 
+	it "mano contiene :colour" do
+		hand = [ Card.new(4, :diamonds),
+				 Card.new(6, :diamonds),
+				 Card.new(2, :diamonds),
+				 Card.new(8, :diamonds),
+				 Card.new(12, :diamonds)]
+		Poker.check(hand).should eq (:colour)
+	end
+
 end

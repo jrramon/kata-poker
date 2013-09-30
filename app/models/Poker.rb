@@ -6,6 +6,7 @@ class Poker
 		return :twin_pairs if twin_pairs(hand)
 		return :full if full(hand)
 		return :straight if straight(hand)
+		return :colour if colour(hand)
 		nil
 	end
 
@@ -30,6 +31,10 @@ class Poker
 		(counts_appearances(hand).values.count(1) == 5) && (max_value(hand) - min_value(hand) == 4)
 	end
 
+	def self.colour(hand)
+		counts_suits(hand).values.count(5) == 1
+	end
+
 	def self.only_one_pair(counts_apps)
 		counts_apps.values.count(2) == 1 && counts_apps.values.count(3) == 0 
 	end
@@ -43,9 +48,17 @@ class Poker
 	end
 
 	def self.counts_appearances(hand)
-		counts = {0 => 0}
+		counts = {}
 		(1..12).each{|n|
 			counts[n] = hand.count{|card| card.num == n } 
+		}
+		counts
+	end
+
+	def self.counts_suits(hand)
+		counts = {}
+		[:diamonds, :pikes, :hearts, :clubs].each{|n|
+			counts[n] = hand.count{|card| card.suit == n } 
 		}
 		counts
 	end
