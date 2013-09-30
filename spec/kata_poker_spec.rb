@@ -41,4 +41,12 @@ describe Poker, "#check" do
 		Poker.check(hand).should eq (:third)
 	end
 
+	it "mano contiene :twin_pairs" do
+		hand = [ Card.new(1, :diamonds),
+				 Card.new(3, :diamonds),
+				 Card.new(3, :pikes),
+				 Card.new(6, :diamonds),
+				 Card.new(1, :hearts)]
+		Poker.check(hand).should eq (:twin_pairs)
+	end
 end
