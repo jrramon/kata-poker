@@ -10,7 +10,7 @@ describe Poker, "#check" do
 				 Card.new(3, :diamonds),
 				 Card.new(5, :diamonds),
 				 Card.new(1, :diamonds)]
-		Poker.check(hand).should eq (:pair)
+		Poker.check(hand).should_not eq (:pair)
 	end
 
 	it "mano contine :pair" do
